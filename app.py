@@ -98,6 +98,8 @@ def download():
     output_path = os.path.join(TEMP_FOLDER, uid)
 
     ydl_opts = {
+        "username": "oauth2",
+        "password": "", 
         "outtmpl": output_path,
         "progress_hooks": [lambda d: progress_hook(d, uid)],
         "noplaylist": True,
