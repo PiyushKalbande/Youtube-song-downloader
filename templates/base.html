@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ config.app_name }}</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+
+<header>
+  <section class="header-card">
+  <i class="fa-solid fa-radio music-icon"></i>
+  <h3>{{ config.about.phrase1 }}</h3>
+  <p>{{ config.about.phrase2 }}</p>
+  <p>{{ config.about.phrase3 }}</p>
+</section>
+</header>
+<img src="{{ url_for('static', filename='images/background.jpg') }}" class="background-image">
+{% block content %}{% endblock %}
+
+<footer>
+  <div class="socials">
+    {% if socials.github %}<a href="{{ socials.github }}" target="_blank"><i class="fab fa-github"></i></a>{% endif %}
+    {% if socials.linkedin %}<a href="{{ socials.linkedin }}" target="_blank"><i class="fab fa-linkedin"></i></a>{% endif %}
+    {% if socials.instagram %}<a href="{{ socials.instagram }}" target="_blank"><i class="fab fa-instagram"></i></a>{% endif %}
+    {% if socials.facebook %}<a href="{{ socials.facebook }}" target="_blank"><i class="fab fa-facebook"></i></a>{% endif %}
+    {% if socials.email %}<a href="mailto:{{ socials.email }}"><i class="fa fa-envelope"></i></a>{% endif %}
+  </div>
+
+  <p>{{ config.footer_note }}</p>
+</footer>
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

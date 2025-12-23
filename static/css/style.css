@@ -1,0 +1,202 @@
+:root {
+    --glass-bg: rgba(255, 255, 255, 0.15);
+    --glass-border: rgba(255, 255, 255, 0.2);
+    --primary-color: #2563eb;
+    --text-light: #ffffff;
+}
+
+body {
+    margin: 0;
+    text-align: center;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    color: var(--text-light);
+    overflow-x: hidden;
+}
+
+/* Background Image Fix */
+.background-image {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    filter: brightness(0.5) blur(2px); /* Background thoda dark and blur */
+}
+
+.main-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+/* Card Container ko sundar banayein */
+.header-card {
+  background: rgba(255, 255, 255, 0.05); /* Glass effect */
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 30px;
+  border-radius: 20px;
+  text-align: center;
+  max-width: 400px;
+  margin: 20px auto;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+/* H3 Tag: Main Title Style */
+.header-card h3 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 24px;
+  margin: 15px 0;
+  letter-spacing: 1px;
+  /* Gradient text effect */
+  background: linear-gradient(to right, #fff, #b3b3b3);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-transform: uppercase;
+}
+
+/* P Tags: Description Style */
+.header-card p {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #d1d1d1; /* Soft white/grey */
+  margin-bottom: 10px;
+  font-weight: 300;
+  opacity: 0.8;
+}
+
+/* Second P tag ko thoda alag highlight karein */
+.header-card p:last-of-type {
+  font-style: italic;
+  font-size: 14px;
+  color: #ffb5f0; /* Music theme color */
+  opacity: 1;
+}
+
+/* Music Icon animation */
+.music-icon {
+  font-size: 45px;
+  margin-bottom: 10px;
+  display: inline-block;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(15px); /* Real Glass Look */
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 30px;
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+/* Form Styles */
+#downloadForm {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+input, select {
+    padding: 12px 15px;
+    border-radius: 10px;
+    border: 1px solid var(--glass-border);
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 16px;
+}
+
+input::placeholder { color: #ddd; }
+
+option { background: #333; color: white; }
+
+button {
+    padding: 15px;
+    border-radius: 10px;
+    border: none;
+    background: var(--primary-color);
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.3s;
+}
+
+button:hover {
+    background: #1d4ed8;
+    transform: translateY(-2px);
+}
+
+/* Progress Bar */
+.progress-wrapper {
+    width: 100%;
+    height: 10px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 5px;
+    margin-top: 20px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    background: #10b981;
+    transition: width 0.3s;
+}
+
+/* Footer */
+footer {
+    margin-top: auto;
+    padding: 40px;
+    text-align: center;
+}
+
+.socials a {
+    color: white;
+    font-size: 24px;
+    margin: 0 15px;
+    opacity: 0.8;
+    transition: 0.3s;
+}
+
+.socials a:hover { opacity: 1; color: var(--primary-color); }
+
+
+
+
+
+
+
+.music-icon {
+    /* Gradient Color jo 2025 mein trending hai */
+    background: linear-gradient(45deg, #ff00cc, #3333ff);
+    -webkit-background-clip: text;
+    background-clip: text; /* standard property for compatibility */
+    -webkit-text-fill-color: transparent;
+    color: #ff00cc; /* fallback for browsers that don't support text clipping */
+
+    font-size: 50px; /* Size bada karne ke liye */
+    filter: drop-shadow(0px 4px 10px rgba(0,0,0,0.2)); /* Halka sa shadow */
+    transition: transform 0.3s ease;
+    cursor: pointer;
+  }
+
+  /* Mouse le jane par icon move karega */
+  .music-icon:hover {
+    transform: scale(1.2) rotate(5deg);
+  }
