@@ -5,6 +5,7 @@ from uuid import uuid4
 from flask import jsonify
 from utils import cleanup_temp
 from dotenv import load_dotenv
+from static_ffmpeg import add_paths
 from flask import Flask, render_template, request, send_file, Response, abort
 
 load_dotenv()
@@ -97,8 +98,7 @@ def download():
 
     output_path = os.path.join(TEMP_FOLDER, uid)
 
-    current_dir = os.getcwd()
-    ffmpeg_exe = os.path.join(current_dir, "ffmpeg_bin", "ffmpeg")
+    add_paths()  # Ensure ffmpeg paths are added
 
     ydl_opts = {
         "outtmpl": output_path,
@@ -107,7 +107,6 @@ def download():
         "quiet": False,
         "retries": 5,
         "cookiefile": "cookies.txt",  # Ye Secret File se aayegi
-        "ffmpeg_location": ffmpeg_exe, # Ye hamari downloaded binary hai
     }
 
 
