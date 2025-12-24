@@ -1,15 +1,16 @@
 #!/usr/bin/env bash
 set -o errexit
 
-# 1. Python dependencies install karein
+# 1. Python dependencies
 pip install -r requirements.txt
 
-# 2. FFmpeg Static Binary (Direct Link) download karein
-echo "Downloading FFmpeg..."
+# 2. FFmpeg setup (2025 reliable link)
+echo "Installing FFmpeg..."
 mkdir -p ffmpeg_bin
+# Download direct binary instead of tarball to avoid extraction errors
+curl -L github.com | gunzip > ffmpeg_bin/ffmpeg
 
-# Direct URL for Linux 64-bit static build
-curl -L "johnvansickle.com" | tar xJ --strip-components=1 -C ./ffmpeg_bin
-
-# 3. Make sure the binary is executable
+# 3. Permissions
 chmod +x ffmpeg_bin/ffmpeg
+
+echo "Build Successful!"
