@@ -97,7 +97,8 @@ def download():
 
     output_path = os.path.join(TEMP_FOLDER, uid)
 
-    ffmpeg_path = os.path.join(os.getcwd(), "ffmpeg_bin", "ffmpeg")
+    current_dir = os.getcwd()
+    ffmpeg_exe = os.path.join(current_dir, "ffmpeg_bin", "ffmpeg")
 
     ydl_opts = {
         "outtmpl": output_path,
@@ -105,9 +106,10 @@ def download():
         "noplaylist": True,
         "quiet": False,
         "retries": 5,
-        "cookiefile": "cookies.txt",  # Ye file Render Secret Files se aayegi
-        "ffmpeg_location": ffmpeg_path, # Local exe ki jagah ye Linux path lega
+        "cookiefile": "cookies.txt",  # Ye Secret File se aayegi
+        "ffmpeg_location": ffmpeg_exe, # Ye hamari downloaded binary hai
     }
+
 
     try:
         if format_type == "mp3":
