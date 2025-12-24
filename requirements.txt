@@ -2,3 +2,4 @@ Flask
 yt-dlp
 python-dotenv
 gunicorn
+static-ffmpeg==2.5.*
