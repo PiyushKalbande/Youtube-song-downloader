@@ -2,7 +2,7 @@ import os
 import time
 
 TEMP_FOLDER = "temp"
-MAX_AGE = 60 * 60  # 1 hour in seconds
+MAX_AGE = 10
 
 def cleanup_temp():
     now = time.time()

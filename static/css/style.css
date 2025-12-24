@@ -5,12 +5,19 @@
     --text-light: #ffffff;
 }
 
+/* Global Fix for Box Sizing */
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
+    padding: 0;
     text-align: center;
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
     color: var(--text-light);
-    overflow-x: hidden;
+    overflow-x: hidden; /* Side scrolling hatane ke liye */
+    width: 100%;
 }
 
 /* Background Image Fix */
@@ -22,7 +29,7 @@ body {
     height: 100%;
     object-fit: cover;
     z-index: -1;
-    filter: brightness(0.5) blur(2px); /* Background thoda dark and blur */
+    filter: brightness(0.4) blur(2px);
 }
 
 .main-wrapper {
@@ -30,125 +37,128 @@ body {
     flex-direction: column;
     align-items: center;
     min-height: 100vh;
-    padding: 20px;
-}
-/* Card Container ko sundar banayein */
-.header-card {
-  background: rgba(255, 255, 255, 0.05); /* Glass effect */
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 30px;
-  border-radius: 20px;
-  text-align: center;
-  max-width: 400px;
-  margin: 20px auto;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    padding: 15px; /* Mobile ke liye padding kam ki */
 }
 
-/* H3 Tag: Main Title Style */
-.header-card h3 {
-  font-family: 'Poppins', sans-serif;
-  font-size: 24px;
-  margin: 15px 0;
-  letter-spacing: 1px;
-  /* Gradient text effect */
-  background: linear-gradient(to right, #fff, #b3b3b3);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-transform: uppercase;
-}
-
-/* P Tags: Description Style */
-.header-card p {
-  font-family: 'Inter', sans-serif;
-  font-size: 16px;
-  line-height: 1.6;
-  color: #d1d1d1; /* Soft white/grey */
-  margin-bottom: 10px;
-  font-weight: 300;
-  opacity: 0.8;
-}
-
-/* Second P tag ko thoda alag highlight karein */
-.header-card p:last-of-type {
-  font-style: italic;
-  font-size: 14px;
-  color: #ffb5f0; /* Music theme color */
-  opacity: 1;
-}
-
-/* Music Icon animation */
-.music-icon {
-  font-size: 45px;
-  margin-bottom: 10px;
-  display: inline-block;
-  animation: float 3s ease-in-out infinite;
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-}
-
-.card {
+/* Common Card Styling (Combined for Header & Main Card) */
+.header-card, .card {
     background: var(--glass-bg);
-    backdrop-filter: blur(15px); /* Real Glass Look */
+    backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
     border: 1px solid var(--glass-border);
     border-radius: 20px;
-    padding: 30px;
-    width: 100%;
-    max-width: 600px;
-    margin: 20px auto;
+    padding: 25px;
+    margin: 15px auto;
+    width: 95%; /* Mobile par side se thodi jagah rakhega */
+    max-width: 550px;
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
     text-align: center;
 }
 
-/* Form Styles */
+.header-card {
+    background: rgba(255, 255, 255, 0.05); /* Thoda alag glass effect */
+    max-width: 450px;
+}
+
+/* Typography Fixes */
+.header-card h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(20px, 5vw, 24px); /* Font size screen ke hisab se adjust hoga */
+    margin: 15px 0;
+    letter-spacing: 1px;
+    background: linear-gradient(to right, #fff, #b3b3b3);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-transform: uppercase;
+}
+
+.header-card p {
+    font-size: 15px;
+    line-height: 1.5;
+    color: #d1d1d1;
+    margin-bottom: 10px;
+    font-weight: 300;
+    opacity: 0.9;
+}
+
+.header-card p:last-of-type {
+    font-style: italic;
+    font-size: 14px;
+    color: #ffb5f0;
+    opacity: 1;
+}
+
+/* Stylish Music Icon */
+.music-icon {
+    font-size: 50px;
+    margin-bottom: 10px;
+    display: inline-block;
+    background: linear-gradient(45deg, #ff00cc, #3333ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: #ff00cc; /* Fallback */
+    filter: drop-shadow(0px 4px 10px rgba(0,0,0,0.2));
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    animation: float 3s ease-in-out infinite;
+}
+
+.music-icon:hover {
+    transform: scale(1.1) rotate(5deg);
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Form Styling Fixes */
 #downloadForm {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 12px;
 }
 
 input, select {
-    padding: 12px 15px;
+    padding: 12px;
     border-radius: 10px;
     border: 1px solid var(--glass-border);
     background: rgba(255, 255, 255, 0.1);
     color: white;
     font-size: 16px;
+    width: 100%; /* Mobile par full width */
 }
 
 input::placeholder { color: #ddd; }
-
-option { background: #333; color: white; }
+option { background: #222; color: white; }
 
 button {
-    padding: 15px;
+    padding: 14px;
     border-radius: 10px;
     border: none;
     background: var(--primary-color);
     color: white;
     font-weight: bold;
-    font-size: 18px;
+    font-size: 17px;
     cursor: pointer;
-    transition: transform 0.2s, background 0.3s;
+    transition: 0.3s;
 }
 
 button:hover {
     background: #1d4ed8;
     transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(37, 99, 235, 0.4);
 }
 
 /* Progress Bar */
 .progress-wrapper {
     width: 100%;
-    height: 10px;
+    height: 8px;
     background: rgba(255,255,255,0.1);
-    border-radius: 5px;
-    margin-top: 20px;
+    border-radius: 10px;
+    margin-top: 15px;
     overflow: hidden;
 }
 
@@ -156,47 +166,33 @@ button:hover {
     height: 100%;
     width: 0%;
     background: #10b981;
-    transition: width 0.3s;
+    transition: width 0.3s ease;
 }
 
-/* Footer */
+/* Footer & Socials */
 footer {
-    margin-top: auto;
-    padding: 40px;
-    text-align: center;
+    padding: 30px;
+    width: 100%;
 }
 
 .socials a {
     color: white;
-    font-size: 24px;
-    margin: 0 15px;
-    opacity: 0.8;
+    font-size: 22px;
+    margin: 0 12px;
+    opacity: 0.7;
     transition: 0.3s;
+    text-decoration: none;
 }
 
-.socials a:hover { opacity: 1; color: var(--primary-color); }
+.socials a:hover { 
+    opacity: 1; 
+    color: var(--primary-color);
+    transform: translateY(-3px);
+}
 
-
-
-
-
-
-
-.music-icon {
-    /* Gradient Color jo 2025 mein trending hai */
-    background: linear-gradient(45deg, #ff00cc, #3333ff);
-    -webkit-background-clip: text;
-    background-clip: text; /* standard property for compatibility */
-    -webkit-text-fill-color: transparent;
-    color: #ff00cc; /* fallback for browsers that don't support text clipping */
-
-    font-size: 50px; /* Size bada karne ke liye */
-    filter: drop-shadow(0px 4px 10px rgba(0,0,0,0.2)); /* Halka sa shadow */
-    transition: transform 0.3s ease;
-    cursor: pointer;
-  }
-
-  /* Mouse le jane par icon move karega */
-  .music-icon:hover {
-    transform: scale(1.2) rotate(5deg);
-  }
+/* Mobile Responsive Adjustments */
+@media (max-width: 480px) {
+    .main-wrapper { padding: 10px; }
+    .header-card, .card { padding: 20px; width: 92%; }
+    .music-icon { font-size: 40px; }
+}

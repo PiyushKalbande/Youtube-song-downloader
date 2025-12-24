@@ -97,14 +97,16 @@ def download():
 
     output_path = os.path.join(TEMP_FOLDER, uid)
 
+    ffmpeg_path = os.path.join(os.getcwd(), "ffmpeg_bin", "ffmpeg")
+
     ydl_opts = {
-        "username": "oauth2",
-        "password": "", 
         "outtmpl": output_path,
         "progress_hooks": [lambda d: progress_hook(d, uid)],
         "noplaylist": True,
-        "quiet": True,
-        "retries": 3
+        "quiet": False,
+        "retries": 5,
+        "cookiefile": "cookies.txt",  # Ye file Render Secret Files se aayegi
+        "ffmpeg_location": ffmpeg_path, # Local exe ki jagah ye Linux path lega
     }
 
     try:
